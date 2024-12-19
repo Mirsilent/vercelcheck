@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("API is running. Go to /api/books/ to access the Book API.")
 
 urlpatterns = [
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('api/', include('testing.urls')),
 ]
